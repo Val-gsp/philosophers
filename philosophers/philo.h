@@ -8,7 +8,6 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <limits.h>
-# include "ft_printf/include/ft_printf.h"
 
 # define RESET		"\033[0m" //Reset to default color
 # define RED		"\033[1;31m"

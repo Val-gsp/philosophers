@@ -1,9 +1,6 @@
-CFLAGS = -Wall -Werror -Wextra -I ft_printf
+CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 NAME = philo
-
-PRINTF_DIR = ft_printf
-PRINTF_LIB = $(PRINTF_DIR)/libftprintf.a
 
 SRC = check.c init.c main.c life.c utils.c
 OBJ_DIR = obj
@@ -13,19 +10,15 @@ GRAY = \033[37m
 GREEN = \033[32m
 RESET = \033[0m
 
-all: $(OBJ_DIR) $(PRINTF_LIB) $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@echo " "
 	@echo "$(GRAY)Dossier obj créé.$(RESET)"
 
-$(PRINTF_LIB):
-	@$(MAKE) -C $(PRINTF_DIR)
-	@echo "$(GRAY)ft_printf compilé.$(RESET)"
-
-$(NAME): $(OBJS) $(PRINTF_LIB)
-	@$(CC) $(CFLAGS) $(OBJS) $(PRINTF_LIB) -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo " "
 	@echo "$(GREEN)Compilation terminée -> $(NAME)$(RESET)"
 	@echo " "
@@ -39,13 +32,11 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@$(MAKE) -C $(PRINTF_DIR) clean
 	@echo "$(GRAY)Dossier obj et fichiers objets supprimés.$(RESET)"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@$(MAKE) -C $(PRINTF_DIR) fclean
-	@echo "$(GRAY)Exécutable et ft_printf supprimés.$(RESET)"
+	@echo "$(GRAY)Exécutable supprimé.$(RESET)"
 
 re: fclean all
 

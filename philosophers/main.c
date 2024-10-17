@@ -1,20 +1,5 @@
 #include "philo.h"
 
-void	ft_free(t_data *data)
-{
-	int	i;
-
-	i = -1;
-	while (++i < data->number_philo)
-		pthread_join(data->philo[i].ph_thread, NULL);
-	i = -1;
-	while (++i < data->number_philo)
-		pthread_mutex_destroy(&(data->forks[i]));
-	pthread_mutex_destroy(&(data->write_mutex));
-	free(data->philo);
-	free(data->forks);
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -22,11 +7,11 @@ int	main(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (0);
 	if (ft_atoi(argv[1]) == 1)
-		return (ft_printf("Le philosophe (1) pense\n"
-				"Le philosophe (1) est dead\n"));
+		return (printf("The philosophe (1) think\n"
+				"The philosophe (1) dead\n"));
 	if (init_info(&data, argv, argc))
-		return (ft_printf("error init info"));
+		return (printf("error init info"));
 	if (init_philo(&data))
-		return (ft_printf("error init philo"));
+		return (printf("error init philo"));
 	ft_free(&data);
 }

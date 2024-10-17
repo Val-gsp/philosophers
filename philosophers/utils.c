@@ -24,3 +24,18 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * result);
 }
+
+void	ft_free(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->number_philo)
+		pthread_join(data->philo[i].ph_thread, NULL);
+	i = -1;
+	while (++i < data->number_philo)
+		pthread_mutex_destroy(&(data->forks[i]));
+	pthread_mutex_destroy(&(data->write_mutex));
+	free(data->philo);
+	free(data->forks);
+}

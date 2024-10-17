@@ -40,7 +40,7 @@ void	*start_routine(void *arg)
 		ft_sleep(philo);
 		if (ft_win(philo->data) && philo->data->finish)
 		{
-			ft_printf(GREEN"Philosophers eat %d fout of %d\n"RESET,
+			printf(GREEN"Philosophers eat %d fout of %d\n"RESET,
 				philo->number_meals, philo->number_meals);
 			philo->data->finish = 0;
 			return (philo);
@@ -49,7 +49,7 @@ void	*start_routine(void *arg)
 			|| !philo->data->finish)
 		{
 			if (philo->data->finish)
-				ft_printf(RED"n°(%d) is dead\n"RESET, philo->ph_id);
+				printf(RED"n°(%d) is dead\n"RESET, philo->ph_id);
 			philo->data->finish = 0;
 			return (philo);
 		}
