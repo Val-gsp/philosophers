@@ -44,6 +44,8 @@ typedef struct s_data
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	m_eat;
+	//new add
+	pthread_mutex_t	finish_mutex;
 }		t_data;
 
 // check.c
@@ -57,7 +59,10 @@ int				init_philo(t_data *data);
 void			ft_sleep(t_philo *philo);
 void			ft_eat(t_philo *philo);
 void			write_status(t_philo *philo, char *status);
+// start_routine.c
 void			*start_routine(void *arg);
+int				check_finish(t_philo *philo);
+int				check_end_conditions(t_philo *philo);
 // utils.c
 int				ft_atoi(const char *str);
 void			ft_free(t_data *data);

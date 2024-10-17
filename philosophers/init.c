@@ -22,6 +22,7 @@ int	init_info(t_data *data, char **argv, int argc)
 		pthread_mutex_init(&data->forks[i++], NULL);
 	pthread_mutex_init(&data->write_mutex, NULL);
 	pthread_mutex_init(&data->m_eat, NULL);
+	pthread_mutex_init(&data->finish_mutex, NULL);
 	return (0);
 }
 

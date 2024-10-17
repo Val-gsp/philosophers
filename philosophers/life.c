@@ -22,35 +22,7 @@ void	write_status(t_philo *philo, char *status)
 {
 	pthread_mutex_lock(&philo->data->write_mutex);
 	if (philo->data->finish)
-		printf("time : %ld - The philosopher n%d : %s\n",philo->last_meals, philo->ph_id, status);
+		printf("time : %ld - The philosopher n%d : %s\n",
+			philo->last_meals, philo->ph_id, status);
 	pthread_mutex_unlock(&philo->data->write_mutex);
-}
-
-void	*start_routine(void *arg)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)arg;
-	while (1)
-	{
-		if (philo->data->finish)
-			write_status(philo, "think 💭");
-		ft_eat(philo);
-		ft_sleep(philo);
-		if (ft_win(philo->data) && philo->data->finish)
-		{
-			printf(GREEN"Philosophers eat %d fout of %d\n"RESET,
-				philo->number_meals, philo->number_meals);
-			philo->data->finish = 0;
-			return (philo);
-		}
-		if ((philo->last_meals != 0 && ft_lose(philo->data))
-			|| !philo->data->finish)
-		{
-			if (philo->data->finish)
-				printf(RED"n°(%d) is dead\n"RESET, philo->ph_id);
-			philo->data->finish = 0;
-			return (philo);
-		}
-	}
 }

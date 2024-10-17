@@ -2,7 +2,7 @@ CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 NAME = philo
 
-SRC = check.c init.c main.c life.c utils.c
+SRC = check.c init.c main.c life.c start_routine.c utils.c
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

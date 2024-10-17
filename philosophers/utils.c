@@ -36,6 +36,8 @@ void	ft_free(t_data *data)
 	while (++i < data->number_philo)
 		pthread_mutex_destroy(&(data->forks[i]));
 	pthread_mutex_destroy(&(data->write_mutex));
+	pthread_mutex_destroy(&(data->m_eat));
+	pthread_mutex_destroy(&(data->finish_mutex));
 	free(data->philo);
 	free(data->forks);
 }
