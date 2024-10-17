@@ -22,8 +22,7 @@ void	write_status(t_philo *philo, char *status)
 {
 	pthread_mutex_lock(&philo->data->write_mutex);
 	if (philo->data->finish)
-		printf("time : %ld - The philosopher n%d : %s - number eat %d\n",
-			philo->last_meals, philo->ph_id, status, philo->number_meals);
+		printf("time : %ld - The philosopher n%d : %s\n",philo->last_meals, philo->ph_id, status);
 	pthread_mutex_unlock(&philo->data->write_mutex);
 }
 

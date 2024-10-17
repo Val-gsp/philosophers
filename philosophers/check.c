@@ -34,9 +34,7 @@ int	ft_lose(t_data *data)
 	while (i < data->number_philo)
 	{
 		if (time >= (data->philo[i].last_meals + (long)data->time_to_die))
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (0);

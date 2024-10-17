@@ -46,17 +46,20 @@ typedef struct s_data
 	pthread_mutex_t	m_eat;
 }		t_data;
 
-void			ft_free(t_data *data);
-int				init_info(t_data *data, char **argv, int argc);
-int				init_philo(t_data *data);
-void			*start_routine(void *arg);
-void			ft_sleep(t_philo *philo);
-void			ft_eat(t_philo *philo);
+// check.c
 long long int	get_timestamp(void);
-long			get_elapsed_time(long start_time);
-void			write_status(t_philo *philo, char *status);
 int				ft_win(t_data *data);
 int				ft_lose(t_data *data);
+// init.c
+int				init_info(t_data *data, char **argv, int argc);
+int				init_philo(t_data *data);
+// life.c
+void			ft_sleep(t_philo *philo);
+void			ft_eat(t_philo *philo);
+void			write_status(t_philo *philo, char *status);
+void			*start_routine(void *arg);
+// utils.c
 int				ft_atoi(const char *str);
+void			ft_free(t_data *data);
 
 #endif
